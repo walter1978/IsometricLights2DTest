@@ -1,22 +1,43 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://TileSetBlocks.tres" type="TileSet" id=1]
+[ext_resource path="res://TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/red_gem.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
 [ext_resource path="res://GemLight.cs" type="Script" id=4]
 [ext_resource path="res://assets/totem1.png" type="Texture" id=5]
 [ext_resource path="res://assets/totem1_n.png" type="Texture" id=6]
+[ext_resource path="res://Totem.cs" type="Script" id=10]
+[ext_resource path="res://GemEllipticalPath.cs" type="Script" id=11]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -69.6296, 90.3704, -14.8148, 51.8519, 48.889, 82.963, -1.48145, 121.481 )
+polygon = PoolVector2Array( -44.4443, 78.5185, 0.00012207, 53.3333, 47.4075, 82.963, -1.48138, 109.63 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+auto_exposure_scale = 0.01
+ssao_radius = 0.1
+ssao_intensity = 19.29
+dof_blur_near_distance = 4.35
+glow_enabled = true
+glow_intensity = 2.17
+glow_strength = 0.69
+glow_bloom = 0.47
+glow_blend_mode = 1
+glow_hdr_threshold = 1.28
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_contrast = 1.08
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2( 0.45, 0.45 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.321569, 0.321569, 0.321569, 1 )
+unique_name_in_owner = true
+position = Vector2( -2.22222, -2.22222 )
+color = Color( 0.219608, 0.219608, 0.219608, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+unique_name_in_owner = true
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 264, 136 )
@@ -24,87 +45,127 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -196602, 0, 0, -196601, 0, 0, -196600, 2, 0, -196599, 1, 0, -196598, 2, 0, -196597, 1, 0, -196596, 0, 0, -131066, 0, 0, -131065, 1, 0, -131064, 0, 0, -131063, 0, 0, -131062, 1, 0, -131061, 2, 0, -131060, 1, 0, -65530, 2, 0, -65529, 0, 0, -65528, 2, 0, -65527, 0, 0, -65526, 2, 0, -65525, 2, 0, -65524, 0, 0, 6, 1, 0, 7, 1, 0, 8, 0, 0, 9, 1, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65542, 0, 0, 65543, 1, 0, 65544, 2, 0, 65545, 0, 0, 65546, 2, 0, 65547, 0, 0, 65548, 2, 0, 131078, 1, 0, 131079, 0, 0, 131080, 2, 0, 131081, 0, 0, 131082, 2, 0, 131083, 1, 0, 131084, 0, 0, 196614, 0, 0, 196615, 1, 0, 196616, 2, 0, 196617, 2, 0, 196618, 0, 0, 196619, 2, 0, 196620, 0, 0 )
 
-[node name="YSort" type="YSort" parent="."]
-
-[node name="Gem" type="Sprite" parent="YSort"]
-position = Vector2( 1193.33, 682.222 )
-scale = Vector2( 0.4, 0.4 )
+[node name="GemEllipticalPath" type="Sprite" parent="."]
+unique_name_in_owner = true
+position = Vector2( 1911.11, 331.111 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
-offset = Vector2( -0.000488281, -44.4441 )
+offset = Vector2( -5.55444, 5.5563 )
+script = ExtResource( 11 )
 
-[node name="Light2D" type="Light2D" parent="YSort/Gem"]
+[node name="Light2D" type="Light2D" parent="GemEllipticalPath"]
+position = Vector2( -5.55591, -5.55542 )
 texture = ExtResource( 3 )
 texture_scale = 5.42
-color = Color( 1, 0.741176, 0.741176, 1 )
+color = Color( 0.980392, 0.431373, 0.431373, 1 )
 energy = 0.95
-range_height = 413.4
+range_height = 1000.0
+range_layer_max = 15
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_color = Color( 1, 1, 1, 0 )
+shadow_color = Color( 0.403922, 0.403922, 0.403922, 0 )
+shadow_gradient_length = 25.0
+shadow_filter = 1
+shadow_filter_smooth = 15.0
 script = ExtResource( 4 )
 
-[node name="Totem" type="Sprite" parent="YSort"]
+[node name="Totems" type="Node2D" parent="."]
+
+[node name="Totem" type="Sprite" parent="Totems"]
 light_mask = 2
-position = Vector2( 1326.67, 342.222 )
+position = Vector2( 1320, 337.778 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem"]
 show_behind_parent = true
 occluder = SubResource( 1 )
 
-[node name="Totem2" type="Sprite" parent="YSort"]
+[node name="Totem2" type="Sprite" parent="Totems"]
 light_mask = 2
-position = Vector2( 1066.67, 340 )
+position = Vector2( 1053.33, 333.333 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem2"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem2"]
 show_behind_parent = true
 occluder = SubResource( 1 )
 
-[node name="Totem3" type="Sprite" parent="YSort"]
+[node name="Totem3" type="Sprite" parent="Totems"]
 light_mask = 2
-position = Vector2( 1606.67, 473.333 )
+position = Vector2( 1582.22, 473.333 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem3"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem3"]
 show_behind_parent = true
 occluder = SubResource( 1 )
 
-[node name="Totem4" type="Sprite" parent="YSort"]
+[node name="Totem4" type="Sprite" parent="Totems"]
 light_mask = 2
-position = Vector2( 802.222, 473.333 )
+position = Vector2( 1586.67, 615.555 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem4"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem4"]
 show_behind_parent = true
 occluder = SubResource( 1 )
 
-[node name="Totem5" type="Sprite" parent="YSort"]
+[node name="Totem5" type="Sprite" parent="Totems"]
 light_mask = 2
-position = Vector2( 1466.67, 677.778 )
+position = Vector2( 1320, 742.222 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem5"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem5"]
 show_behind_parent = true
 occluder = SubResource( 1 )
 
-[node name="Totem6" type="Sprite" parent="YSort"]
+[node name="Totem6" type="Sprite" parent="Totems"]
 light_mask = 2
-position = Vector2( 931.111, 680 )
+position = Vector2( 1060, 740 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem6"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem6"]
 show_behind_parent = true
 occluder = SubResource( 1 )
+
+[node name="Totem7" type="Sprite" parent="Totems"]
+light_mask = 2
+position = Vector2( 802.222, 464.444 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem7"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="Totem8" type="Sprite" parent="Totems"]
+light_mask = 2
+position = Vector2( 784.444, 602.222 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+script = ExtResource( 10 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Totems/Totem8"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )

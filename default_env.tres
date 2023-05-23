@@ -5,3 +5,7 @@
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
+glow_enabled = true
+glow_intensity = 3.01
+glow_bloom = 0.4
+glow_hdr_threshold = 1.88

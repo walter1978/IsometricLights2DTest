@@ -1,9 +1,0 @@
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\bin\Debug\IsometricLights2DTest.dll
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\bin\Debug\IsometricLights2DTest.pdb
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.csproj.AssemblyReference.cache
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.GeneratedMSBuildEditorConfig.editorconfig
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.AssemblyInfoInputs.cache
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.AssemblyInfo.cs
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.csproj.CoreCompileInputs.cache
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.dll
-D:\workspace_godot\IsometricLights2DTest\.mono\temp\obj\Debug\IsometricLights2DTest.pdb
