@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://TileSetBlocks.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/red_gem.png" type="Texture" id=2]
+[ext_resource path="res://assets/light.png" type="Texture" id=3]
+[ext_resource path="res://GemLight.cs" type="Script" id=4]
+[ext_resource path="res://assets/totem1.png" type="Texture" id=5]
+[ext_resource path="res://assets/totem1_n.png" type="Texture" id=6]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -69.6296, 90.3704, -14.8148, 51.8519, 48.889, 82.963, -1.48145, 121.481 )
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2( 0.45, 0.45 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.321569, 0.321569, 0.321569, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 264, 136 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -196602, 0, 0, -196601, 0, 0, -196600, 2, 0, -196599, 1, 0, -196598, 2, 0, -196597, 1, 0, -196596, 0, 0, -131066, 0, 0, -131065, 1, 0, -131064, 0, 0, -131063, 0, 0, -131062, 1, 0, -131061, 2, 0, -131060, 1, 0, -65530, 2, 0, -65529, 0, 0, -65528, 2, 0, -65527, 0, 0, -65526, 2, 0, -65525, 2, 0, -65524, 0, 0, 6, 1, 0, 7, 1, 0, 8, 0, 0, 9, 1, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65542, 0, 0, 65543, 1, 0, 65544, 2, 0, 65545, 0, 0, 65546, 2, 0, 65547, 0, 0, 65548, 2, 0, 131078, 1, 0, 131079, 0, 0, 131080, 2, 0, 131081, 0, 0, 131082, 2, 0, 131083, 1, 0, 131084, 0, 0, 196614, 0, 0, 196615, 1, 0, 196616, 2, 0, 196617, 2, 0, 196618, 0, 0, 196619, 2, 0, 196620, 0, 0 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Gem" type="Sprite" parent="YSort"]
+position = Vector2( 1193.33, 682.222 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+offset = Vector2( -0.000488281, -44.4441 )
+
+[node name="Light2D" type="Light2D" parent="YSort/Gem"]
+texture = ExtResource( 3 )
+texture_scale = 5.42
+color = Color( 1, 0.741176, 0.741176, 1 )
+energy = 0.95
+range_height = 413.4
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color( 1, 1, 1, 0 )
+script = ExtResource( 4 )
+
+[node name="Totem" type="Sprite" parent="YSort"]
+light_mask = 2
+position = Vector2( 1326.67, 342.222 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="Totem2" type="Sprite" parent="YSort"]
+light_mask = 2
+position = Vector2( 1066.67, 340 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem2"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="Totem3" type="Sprite" parent="YSort"]
+light_mask = 2
+position = Vector2( 1606.67, 473.333 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem3"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="Totem4" type="Sprite" parent="YSort"]
+light_mask = 2
+position = Vector2( 802.222, 473.333 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem4"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="Totem5" type="Sprite" parent="YSort"]
+light_mask = 2
+position = Vector2( 1466.67, 677.778 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem5"]
+show_behind_parent = true
+occluder = SubResource( 1 )
+
+[node name="Totem6" type="Sprite" parent="YSort"]
+light_mask = 2
+position = Vector2( 931.111, 680 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/Totem6"]
+show_behind_parent = true
+occluder = SubResource( 1 )
